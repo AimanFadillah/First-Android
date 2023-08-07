@@ -14,7 +14,16 @@ class Man extends StatelessWidget {
            Padding(
             padding:const EdgeInsets.symmetric(horizontal: 12.0),
             child: Center(
-              child: Icon(Icons.account_circle_outlined,size: 32,color: Colors.white,),
+              child: IconButton(
+                icon: Icon(Icons.account_circle_outlined,size: 32,color: Colors.white),
+                onPressed: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => min(),
+                    ),
+                  );
+                },
+              ),
             ),
           )
         ],
@@ -50,56 +59,57 @@ class Man extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 235,
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-                    decoration:const BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.all(Radius.circular(5))
-                    ),
-                    child:const Text("Penting",style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.start),
+                  Expanded(
+                      child:Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+                          margin: const EdgeInsets.fromLTRB(1,0,5,0),
+                          decoration:const BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.all(Radius.circular(5))
+                          ),
+                          child:const Text("Mingguan",style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.start),
+                      )
                   ),
-                  Container(
-                    padding:const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-                    width: 235,
-                    decoration:const BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.all(Radius.circular(5))
-                    ),
-                    child:const Text("Mingguan",style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.start),
+                  Expanded(
+                      child:Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+                          margin: const EdgeInsets.fromLTRB(5,0,1,0),
+                          decoration:const BoxDecoration(
+                              color: Colors.yellow,
+                              borderRadius: BorderRadius.all(Radius.circular(5))
+                          ),
+                          child:const Text("Penting",style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.start)
+                      )
                   )
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 235,
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-                    decoration: const BoxDecoration(
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(1,5,5,5),
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                      decoration: BoxDecoration(
                         color: Colors.purple,
-                        borderRadius:  BorderRadius.all(Radius.circular(5))
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: const Text("Public", style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.start),
                     ),
-                    child:const  Text("Public",style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.start),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-                    width: 235,
-                    decoration:const BoxDecoration(
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                      margin: const EdgeInsets.fromLTRB(5,5,1,5),
+                      decoration: BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.all(Radius.circular(5))
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: const Text("Buku", style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.start),
                     ),
-                    child: const Text("Buku",style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.start),
-                  )
+                  ),
                 ],
               ),
-              ElevatedButton(onPressed: (){
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => min(),
-                ),
-              );}, child: const Text("Masuk Cuy")),
             ],
           )
       ),

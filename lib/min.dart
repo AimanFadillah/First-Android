@@ -9,11 +9,15 @@ class min extends StatefulWidget {
 }
 
 class _minState extends State<min> {
+
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:AppBar(
-          title: const Text("Makmur",style: TextStyle(color:Colors.white),),
+          title: const Text("Foto",style: TextStyle(color:Colors.white),),
           backgroundColor: Colors.deepPurpleAccent,
         ),
 
@@ -47,10 +51,23 @@ class _minState extends State<min> {
                             child:const Text("Makmur",style: TextStyle(fontSize: 30),),
                             padding: EdgeInsets.all(10),
                           ),
-                          Container(
-                            child:Icon(Icons.star,size:30,color: Colors.red),
-                            padding: EdgeInsets.all(10),
-                          ),
+                          Row(
+                            children: [
+                              Container(
+                                // child: Icon(Icons.star,),
+                                child: IconButton(
+                                  icon: (_isFavorited
+                                      ? const Icon(Icons.star,size:30,color: Colors.red)
+                                      : const Icon(Icons.star_border,size:30,color: Colors.red)),
+                                  onPressed:_toggleFavorite ,
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: Text('$_favoriteCount',style: TextStyle(fontSize: 20),),
+                              )
+                            ],
+                          )
                         ],
                       ),
                       Row(
@@ -87,4 +104,20 @@ class _minState extends State<min> {
 
     );
   }
+
+  void _toggleFavorite () {
+    setState(() {
+      if(_isFavorited){
+        _favoriteCount -= 1 ;
+        _isFavorited = false;
+      }else{
+        _favoriteCount += 1;
+        _isFavorited = true;
+      }
+    });
+  }
+
+
 }
+
+
